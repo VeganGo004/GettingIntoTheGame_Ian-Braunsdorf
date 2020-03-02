@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public float speed = 10;
     const float hozBoudary = 10;
+    public GameObject projectilePrefab;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,5 +32,10 @@ public class PlayerController : MonoBehaviour
         float hozInput = Input.GetAxis("Horizontal");
 
         transform.Translate(Vector3.right * hozInput * Time.deltaTime * speed); 
+
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            Instantiate(projectilePrefab, transform.position, projectilePrefab.transform.rotation);
+        }
     }
 }
