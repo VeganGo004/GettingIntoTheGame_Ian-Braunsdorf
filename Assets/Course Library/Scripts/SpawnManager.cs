@@ -10,16 +10,19 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        InvokeRepeating("SpawnAnimals", 3.0f, 0.8f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            int randimal = Random.Range(0, animals.Length);
-            Instantiate(animals[randimal], new Vector3(Random.Range(-xRange, xRange), 0, spawnPointZ), animals[randimal].transform.rotation);
-        }
+        
+    }
+
+    void SpawnAnimals()
+    {
+        int randimal = Random.Range(0, animals.Length);
+        Instantiate(animals[randimal], new Vector3(Random.Range(-xRange, xRange), 0, spawnPointZ), 
+            animals[randimal].transform.rotation);
     }
 }
